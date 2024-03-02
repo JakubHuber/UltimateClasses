@@ -11,7 +11,7 @@
 - ErrorDetails.cls
 
 **Usage:**
-ErrorGuard object is designed to collect all errors encountered during program run. Also it gives output to the Imediate window and log file if needed. Specyfic procedure template is needed to proper use:
+ErrorGuard object is designed to collect all errors encountered during program run. Also it gives output to the Imediate window and log file if needed. Specyfic try-catch procedure template is needed to proper use:
 
 ```vb
 Public Class
@@ -24,12 +24,17 @@ Private this As TConfig
 Sub Example
     On Error GoTo ErrHandler
 
-	Example code . . .
+	'Example code . . .
+
+'If needed
+Finally:
+    'Clean process
 
 Exit Sub
 
 ErrHandler:
     this.ErrorGuard.RaiseGuard TypeName(Me) & ".Example"
+    GoTo Finally
 End Sub
 
 End Class
