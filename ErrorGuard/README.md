@@ -6,5 +6,5 @@
 - Microsoft VBScript Regular Expressions 5.5
 
 **Files needed to proper work:**
-- JsonConverter.bas
+- JsonConverter.bas [VBA-JSON](https://github.com/VBA-tools/VBA-JSON "VBA-JSON")
 - PathLib.cls
