@@ -53,7 +53,7 @@ To start working with ErrorGuard instance it like:
 Dim oGuard as ErrorGuard: Set oGuard = New ErrorGuard
 ```
 |  Type |Name   |Description   |
-| :------------ | :------------ | :---------------------------------- |
+| :------------ | :------------------------- | :---------------------------------- |
 | Property  |IsRaised As Boolean  | True when first error show up  |
 | Property  |GuardErrors As Collection   | Collection of catched errors  |
 |Property   | IsLoggingToFileEnabled  As Boolean  |  Indicates if errors will be instantly written to file |
