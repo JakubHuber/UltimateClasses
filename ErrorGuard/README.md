@@ -1,11 +1,10 @@
-Error guard classes to manage errors in Access/Excel projects.
+###  Error guard classes to manage errors in Access/Excel projects.
 
-**References needed to proper work:**
-Microsoft Scripting Runtime
-ADO 6.1
-Regular Expressions 5.5
+**References needed:**
+- Microsoft Scripting Runtime
+- Microsoft ActiveX Data Objects 6.1 Library
+- Microsoft VBScript Regular Expressions 5.5
 
 **Files needed to proper work:**
-JsonConverter.bas
-PathLib.cls
-
+- JsonConverter.bas
+- PathLib.cls
