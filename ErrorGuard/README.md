@@ -29,7 +29,7 @@ Sub Example
 Exit Sub
 
 ErrHandler:
-    this.ErrorGuard.RaiseGuard "Example"
+    this.ErrorGuard.RaiseGuard TypeName(Me) & ".Example"
 End Sub
 
 End Class
