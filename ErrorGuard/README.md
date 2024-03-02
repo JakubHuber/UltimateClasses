@@ -8,11 +8,14 @@
 **Files needed to proper work:**
 - JsonConverter.bas [VBA-JSON](https://github.com/VBA-tools/VBA-JSON "VBA-JSON")
 - PathLib.cls
+- ErrorDetails.cls
 
 **Usage:**
 ErrorGuard object is designed to collect all errors encountered during program run. Also it gives output to the Imediate window and log file if needed. Specyfic procedure template is needed to proper use:
 
 ```vb
+Public Class
+
 Private Type TConfig
     ErrorGuard As ErrorGuard
 End Type
@@ -28,9 +31,29 @@ Exit Sub
 ErrHandler:
     this.ErrorGuard.RaiseGuard "Example"
 End Sub
+
+End Class
 ```
 
-It is prefered to use it in a class object and reference it to other class objects. 
+###### TODO: provide example short project.
 
+It is prefered to use it in a class object and reference it if needed to other class objects. 
+Also it works good when you want to keep separate error handling for each instance of classes.
 
-Test examples of possibilities are in TestErrorGuard.bas
+Examples of properties possibilities are in TestErrorGuard.bas
+
+**Properties:**
+To start working with ErrorGuard instance it like:
+```vb
+Dim oGuard as ErrorGuard: Set oGuard = New ErrorGuard
+```
+|  Type |Name   |Description   |
+| :------------ | :------------ | :------------ |
+| Property  |IsRaised As Boolean  | True when first error show up  |
+| Property  |GuardErrors As Collection   | Collection of catched errors  |
+|Property   | IsLoggingToFileEnabled  As Boolean  |  Indicates if errors will be instantly written to file |
+|Property   | LogFilePath As String  | When logging enabled path will be displayied  |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
