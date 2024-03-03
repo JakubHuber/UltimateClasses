@@ -56,11 +56,11 @@ Dim oGuard as ErrorGuard: Set oGuard = New ErrorGuard
 ```
 |  Type |Name   |Description   |
 | :------------ | :------------------------- | :---------------------------------- |
-| Property  |```vb IsRaised As Boolean ``` | True when first error show up  |
-| Property  |GuardErrors As Collection   | Collection of catched errors  |
-|Property   | IsLoggingToFileEnabled  As Boolean  |  Indicates if errors will be instantly written to file |
-|Property   | LogFilePath As String  | When logging enabled path will be displayied  |
-|Sub   |EnableLogErrorsToFile(ByVal **logFileName** As String, **CreateLogInProjectFolder** As Boolean)   |Enables loging into text file. Can be pass with or without extension.  If **logFileName** is not provided errors are written to default *ErrorGuard.log*.  **CreateLogInProjectFolder** creates *VBA logs* folder in root project folder. If false then folder is created in user LOCALAPPDATA. Sub displays in Immidiate Window where log will be saved.  |
+| Property  |` IsRaised As Boolean ` | True when first error show up  |
+| Property  |`GuardErrors As Collection`   | Collection of catched errors  |
+|Property   | `IsLoggingToFileEnabled  As Boolean`  |  Indicates if errors will be instantly written to file |
+|Property   | `LogFilePath As String`  | When logging enabled path will be displayied  |
+|Sub   |`EnableLogErrorsToFile(ByVal **logFileName** As String, **CreateLogInProjectFolder** As Boolean)`   |Enables loging into text file. Can be pass with or without extension.  If **logFileName** is not provided errors are written to default *ErrorGuard.log*.  **CreateLogInProjectFolder** creates *VBA logs* folder in root project folder. If false then folder is created in user LOCALAPPDATA. Sub displays in Immidiate Window where log will be saved.  |
 |Sub   | Public Sub RaiseGuard(**Source** As String, Optional **ErrorCode** As Long, Optional **Message** As String, Optional **ErrorCategory** As EnumErrorCategories = 0)   | Raises guard *IsRaised = True*, adds error to collection, displays error in Immidiate Window and if *IsLoggingToFileEnabled* writes error info to file.  |
 |Function   | DeserializeErrors() As String  | Convert errors to Json collection  |
 | Sub  | DisplayErrors(Optional **InMessageBox** As Boolean = False)   | Best to use at the end of process. Easy way to show errors to user if *InMessageBox* is set to True.     |
