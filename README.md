@@ -1,6 +1,6 @@
 # UltimateClasses - UNDER CONSTRUCTION
 
-VBA classes namespace to manage projects 
+Wraped VBA classes to better manage projects 
 
 See READMEs in folders for details of usage
 
