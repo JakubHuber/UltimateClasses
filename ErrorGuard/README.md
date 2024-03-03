@@ -64,3 +64,4 @@ Dim oGuard as ErrorGuard: Set oGuard = New ErrorGuard
 |Sub   | `Public Sub RaiseGuard(Source As String, Optional ErrorCode As Long, Optional Message As String, Optional ErrorCategory As EnumErrorCategories = 0) `   | Raises guard *IsRaised = True*, adds error to collection, displays error in Immidiate Window and if *IsLoggingToFileEnabled* writes error info to file.  |
 |Function   | `DeserializeErrors() As String ` | Convert errors to Json collection  |
 | Sub  | `DisplayErrors(Optional InMessageBox As Boolean = False) `  | Best to use at the end of process. Easy way to show errors to user if *InMessageBox* is set to True.     |
+| Sub | `ClearGuard()` | Sets *IsRaised* to false and clears GuardErrors collection|
