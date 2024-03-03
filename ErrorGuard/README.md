@@ -13,7 +13,8 @@
 **Usage and how it works:**
 
 ErrorGuard object is designed to collect all errors encountered during program run. Also it gives output to the Imediate window and log file if needed. It takes properties of global VBA Err object, when error occurs, like message and number if no optional parameters are provided. Minimum to pass to Error Guard is Source. Best in pattern: [Class/Module Name].[Subroutine] (Example `TypeName(Me) & ".MySubroutineName"` )
-Put error handler in each subroutine wher you think you can spot for errors or raise your own errors like: oErrorGuard.Raise or Err.Raise (See example project)
+Put error handler in each subroutine wher you think you can spot for errors or raise your own errors like: oErrorGuard.Raise or Err.Raise (###### TODO: provide example short project.)
+
 
 Specyfic try-catch procedure template is needed to proper use:
 ```vb
@@ -42,8 +43,6 @@ End Sub
 
 End Class
 ```
-
-###### TODO: provide example short project.
 
 It is prefered to use it in a class object and reference it if needed to other class objects. 
 Also it works good when you want to keep separate error handling for each instance of classes.
