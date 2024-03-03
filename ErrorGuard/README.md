@@ -8,7 +8,7 @@
 **Files needed to proper work:**
 - JsonConverter.bas [VBA-JSON](https://github.com/VBA-tools/VBA-JSON "VBA-JSON")
 - ErrorDetails.cls 
-- PathLib.cls [[PathLibFolder](https://github.com/JakubHuber/UltimateClasses/tree/main/PathLib)]
+- PathLib.cls [PathLibFolder](https://github.com/JakubHuber/UltimateClasses/tree/main/PathLib)
 
 **Usage:**
 ErrorGuard object is designed to collect all errors encountered during program run. Also it gives output to the Imediate window and log file if needed. Specyfic try-catch procedure template is needed to proper use:
