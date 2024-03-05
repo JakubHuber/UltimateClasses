@@ -1,12 +1,12 @@
-# UltimateClasses
+## UltimateClasses
 
-Wraped VBA classes to better manage projects.
+## Wraped VBA classes to better manage projects.
 
-Keep VBA alive.
+### **Keep VBA alive.**
 
 See READMEs in folders for details of usage
 
-helpfull comments are welcome. :)
+Helpfull comments are welcome. :)
 
 What you can find by now:
 - ErrorGuard - classes to manage error handling
