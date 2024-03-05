@@ -2,6 +2,8 @@
 
 Wraped VBA classes to better manage projects.
 
+Keep VBA alive.
+
 See READMEs in folders for details of usage
 
 helpfull comments are welcome. :)
