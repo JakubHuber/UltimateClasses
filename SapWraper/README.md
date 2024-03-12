@@ -2,6 +2,7 @@
 
 **References needed:**
 - Microsoft Scripting Runtime
+- C:\Program Files (x86)\SAP\FrontEnd\SAPgui\sapfewse.ocx
 
 **Files needed to proper work:**
 - JsonConverter.bas [VBA-JSON](https://github.com/VBA-tools/VBA-JSON "VBA-JSON")
