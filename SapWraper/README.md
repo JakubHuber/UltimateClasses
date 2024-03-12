@@ -31,7 +31,7 @@ Dim sapConnString As String
     End with
 ```
 
-From this point you if property IsConnected is true you are ready to get GuiSession object using .GetNewSession or .GetSession
+From this point if property IsConnected is true and you get no errors, you are ready to get GuiSession object using .GetNewSession or .GetSession
 
 #TODO:  finish readme
 
