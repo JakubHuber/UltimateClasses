@@ -4,7 +4,7 @@ Option Explicit
 Sub Test_Sap_Init()
     
     Dim sapConnString As String
-    sapConnString = "/SAP_CODEPAGE=1100    /FULLMENU SNC_PARTNERNAME=""p:CN=PRZ, OU=SAP-KITS, O=KFR, C=UK"" SNC_QOP=9 /H/srt.kfplc.com/S/3299/M/vprzcs.sap-bau-prod.c.int.gp.kfplc.com/S/3601/G/USERS /UPDOWNLOAD_CP=2"
+    sapConnString = "Your Sap connection string"
 
     Dim oSap As SapWraper: Set oSap = New SapWraper
     With oSap
