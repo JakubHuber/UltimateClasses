@@ -30,6 +30,11 @@ Dim sapConnString As String
         .Init "PRZ", sapConnString
     End with
 ```
+
+From this point you if property IsConnected is true you are ready to get GuiSession object using .GetNewSession or .GetSession
+
+#TODO:  finish readme
+
 More about Sap and Scripting objects can be found on:
 [GuiConnection](https://help.sap.com/docs/sap_gui_for_windows/b47d018c3b9b45e897faf66a6c0885a8/8093f712d0ed4092a463b7edee5792cb.html "GuiConnection")
 
