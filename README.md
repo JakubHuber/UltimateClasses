@@ -2,7 +2,7 @@
 
 ### Wraped VBA classes to better manage projects.
 
-### **Keep VBA alive.**
+### **Long live VBA fighters.**
 
 See READMEs in folders for details of usage
 
