@@ -55,11 +55,11 @@ Initialize class like below:
 
 |  Type |Name   |Description   |
 | :------------ | :------------------------- | :---------------------------------- |
-| Property  |` IsConnected() As Boolean ` | Shows true if class was able to get SapGuiAuto, SapApplication, GuiConnection |
-| Property  |` ErrorGuard As ErrorGuard`   | Exposes ErrorGuard  |
+| Property  |`IsConnected() As Boolean` | Shows true if class was able to get SapGuiAuto, SapApplication, GuiConnection |
+| Property  |`ErrorGuard As ErrorGuard`   | Exposes ErrorGuard  |
 | Sub   | `Init(sapSid As String, Optional sapConnectionString As String, Optional oGuard As ErrorGuard)`  |  If you pass sapSid like PRZ/QRZ/FRZ ect. you will get connection of non busy session and you are ready to get Sap session. But you need to have SAPLogon with transaction opened. If you pass optional #sapConnectionString# class will try to open SAPLogon if it is not opened and then connect using sapConnectionString. From that point you are ready to get Sap session.  |
-|Function   | ` GetSession() As GuiSession`  | Get first session of Sap connection  |
-|Function   |` GetNewSession() As GuiSession`   | Creates new session from first non busy session  |
+|Function   | `GetSession() As GuiSession`  | Get first session of Sap connection  |
+|Function   |`GetNewSession() As GuiSession`   | Creates new session from first non busy session  |
 |Sub   |`CloseSession()`   | Closes session which was retrived during GetSession  |
 |Sub   |`CloseConnection()`   | Closes connection  |
 
