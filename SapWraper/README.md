@@ -46,7 +46,7 @@ Class defends itself from:
 - Sessions Number Limit Reached
 
 ## **Properties:**
-Initialize Class class like below:
+Initialize class like below:
 ```vb
     Dim oSap As SapWraper: Set oSap = New SapWraper
     oSap.Init "Your Sap SID", "Optional Connection String"
