@@ -31,14 +31,36 @@ Dim sapConnString As String
         .Init "PRZ", sapConnString
     End with
 ```
+More about Sap and GuiConnection object can be found on:
+[GuiConnection](https://help.sap.com/docs/sap_gui_for_windows/b47d018c3b9b45e897faf66a6c0885a8/8093f712d0ed4092a463b7edee5792cb.html "GuiConnection")
 
 From this point if property IsConnected is true and you get no errors, you are ready to get GuiSession object using .GetNewSession or .GetSession
 
-#TODO:  finish readme
-
-More about Sap and Scripting objects can be found on:
-[GuiConnection](https://help.sap.com/docs/sap_gui_for_windows/b47d018c3b9b45e897faf66a6c0885a8/8093f712d0ed4092a463b7edee5792cb.html "GuiConnection")
-
 Examples of properties and possibilities are in TestSap.bas
+
+Class defends itself from:
+- Sap SID Missing
+- SapGuiAuto Not Found 
+- Connections Not Found
+- Could Not Find Session Or All Sessions Are Busy
+- Sessions Number Limit Reached
+
+## **Properties:**
+Initialize Class class like below:
+```vb
+    Dim oSap As SapWraper: Set oSap = New SapWraper
+    oSap.Init "Your Sap SID", "Optional Connection String"
+```
+
+
+|  Type |Name   |Description   |
+| :------------ | :------------------------- | :---------------------------------- |
+| Property  |` IsConnected() As Boolean ` | Shows true if class was able to get SapGuiAuto, SapApplication, GuiConnection and grab any Session |
+| Property  |` ErrorGuard As ErrorGuard`   | Exposes ErrorGuard  |
+| Sub   | `Init(sapSid As String, Optional sapConnectionString As String, Optional oGuard As ErrorGuard)`  |  If you pass sapSid like PRZ/QRZ/FRZ ect. you will get connection of non busy session and you are ready to get Sap session. But you need to have SAPLogon with transaction opened. If you pass optional #sapConnectionString# class will try to open SAPLogon if it is not opened and then connect using sapConnectionString. From that point you are ready to get Sap session.  |
+|Function   | ` GetSession() As GuiSession`  | Get first session of Sap connection  |
+|Function   |` GetNewSession() As GuiSession`   | Creates new session from first non busy session  |
+|Sub   |`CloseSession()`   | Closes session which was retrived during GetSession  |
+|Sub   |`CloseConnection()`   | Closes connection  |
 
 
