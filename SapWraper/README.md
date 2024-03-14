@@ -34,7 +34,7 @@ Dim sapConnString As String
 More about Sap and GuiConnection object can be found on:
 [GuiConnection](https://help.sap.com/docs/sap_gui_for_windows/b47d018c3b9b45e897faf66a6c0885a8/8093f712d0ed4092a463b7edee5792cb.html "GuiConnection")
 
-From this point if property IsConnected is true and you get no errors, you are ready to get GuiSession object using .GetNewSession or .GetSession
+From this point if property IsConnected is true and you get no errors, you are ready to get GuiSession object using `.GetNewSession` or `.GetSession`
 
 Examples of properties and possibilities are in TestSap.bas
 
