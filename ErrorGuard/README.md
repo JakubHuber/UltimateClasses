@@ -15,7 +15,7 @@
 ErrorGuard object is designed to collect all errors encountered during program run. Also it gives output to the Imediate window and log file if needed. It takes properties of global VBA Err object, when error occurs, like message and number if no optional parameters are provided. Minimum to pass to Error Guard is Source. Best in pattern: [Class/Module Name].[Subroutine] (Example `TypeName(Me) & ".MySubroutineName"` )
 Put error handler in each subroutine wher you think you can spot for errors or raise your own errors like: oErrorGuard.Raise or Err.Raise 
 
-###### *Example implementation in project can be found in Excel file: ErrorGuard process flow example.xlsm. Download example and run try step by step function SendMails. Comments can be search by fraze: NOTE*
+###### *Example implementation in project can be found in Excel file: ErrorGuard process flow example.xlsm. Download example and run. Try step by step function SendMails. Comments can be search by fraze: NOTE*
 
 Specyfic try-catch procedure template is needed to proper use:
 ```vb
