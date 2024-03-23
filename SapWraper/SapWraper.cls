@@ -29,6 +29,8 @@ Private Enum EnumExceptions
     ConnectionsNotFound
     CouldNotFindSessionOrAllSessionsAreBusy
     SessionsNumberLimitReached
+    UserOrPasswordFieldNotFound
+    LoginToSapFailed
 End Enum
 
 Private Type TParams
@@ -60,6 +62,49 @@ Public Sub Init(sapSid As String, Optional sapConnectionString As String, Option
       
     GetGuiApplication
         
+End Sub
+
+Public Sub LoginToSap(userName As String, password As String)
+    On Error GoTo ErrHandler
+    
+    If Not this.IsConnected Then
+        Debug.Print "Sap is not connected"
+        Exit Sub
+    End If
+    
+    Me.GetSession
+    
+    If this.SapSession Is Nothing Then
+        this.ErrorGuard.RaiseGuard TypeName(Me) & ".LoginToSap", CouldNotFindSessionOrAllSessionsAreBusy, "Could Not Find Session Or All Sessions Are Busy"
+        Exit Sub
+    End If
+    
+    With this.SapSession.ActiveWindow
+        
+        Dim userField As GuiTextField: Set userField = .FindById("usr/txtRSYST-BNAME", False)
+        Dim passwordField As GuiPasswordField: Set passwordField = .FindById("usr/pwdRSYST-BCODE", False)
+        
+        If userField Is Nothing Or passwordField Is Nothing Then
+            this.ErrorGuard.RaiseGuard TypeName(Me) & ".LoginToSap", UserOrPasswordFieldNotFound, "User Or Password Field Not Found"
+            Exit Sub
+        End If
+        
+        userField.Text = userName
+        passwordField.Text = password
+        
+        .SendVKey 0
+        
+        Dim oStatusBar As Object: Set oStatusBar = .FindById("sbar")
+        If oStatusBar.MessageType = "E" Then
+            this.ErrorGuard.RaiseGuard TypeName(Me) & ".LoginToSap", LoginToSapFailed, oStatusBar.Text
+        End If
+        
+    End With
+
+Exit Sub
+ErrHandler:
+    this.ErrorGuard.RaiseGuard TypeName(Me) & ".LoginToSap"
+
 End Sub
 
 Private Sub GetGuiApplication()
@@ -340,5 +385,3 @@ End Function
 Public Property Get IsConnected() As Boolean
     IsConnected = this.IsConnected
 End Property
-
-
