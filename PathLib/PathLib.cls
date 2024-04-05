@@ -24,6 +24,7 @@ End Enum
 Private Type TConfig
     Fso As FileSystemObject
     ErrorGuard As ErrorGuard
+    OneDriveMountPoints As Dictionary
 End Type
 Private this As TConfig
 
@@ -197,24 +198,34 @@ End Function
 Public Function UriPathToLocal(sPath As String) As String
 
     Const LITERAL_DOCUMENTS As String = "/documents"
-
+    
     sPath = LCase$(Trim$(sPath))
+    
     If sPath = vbNullString Then Exit Function
-    If InStr(sPath, "https://") = 0 Then
+    'If InStr(sPath, "https://") = 0 Then
+    If this.Fso.GetDriveName(sPath) <> vbNullString Then
         UriPathToLocal = sPath
         Exit Function
     End If
-
-    'Comercial OneDrive has /Documents
-    Dim PathOneDriveCommercial As String
-    PathOneDriveCommercial = Mid$(sPath, InStr(sPath, LITERAL_DOCUMENTS) + Len(LITERAL_DOCUMENTS), Len(sPath))
-    PathOneDriveCommercial = Replace(PathOneDriveCommercial, SLASH, BACKSLASH)
-
-    'TODO: find https path change to drive
-    'UriPathToLocal = Replace(Left(Path, InStr(Path, LITERAL_DOCUMENTS) - 1), SLASH, BACKSLASH) & PathOneDriveCommercial
-
-
-    UriPathToLocal = Environ("ONEDRIVECOMMERCIAL") & PathOneDriveCommercial
+    
+    Dim v As Variant
+    For Each v In this.OneDriveMountPoints
+        
+        If InStr(1, sPath, CStr(v), vbTextCompare) > 0 Then
+            
+            UriPathToLocal = Replace(sPath, CStr(v), this.OneDriveMountPoints(v) & SLASH, , , vbTextCompare)
+            Exit Function
+            
+        End If
+        
+    Next
+    
+'    'Comercial OneDrive has /Documents
+'    Dim PathOneDriveCommercial As String
+'    PathOneDriveCommercial = Mid$(sPath, InStr(sPath, LITERAL_DOCUMENTS) + Len(LITERAL_DOCUMENTS), Len(sPath))
+'    PathOneDriveCommercial = Replace(PathOneDriveCommercial, SLASH, BACKSLASH)
+'
+'    UriPathToLocal = environ("ONEDRIVECOMMERCIAL") & PathOneDriveCommercial
 
 End Function
 
@@ -269,14 +280,55 @@ Private Function InvalidCharsToRegexPattern() As String
 
 End Function
 
+Private Sub GetOnDriveMountPoints()
+    On Error GoTo ErrHandler
+    
+    Const HKCU = &H80000001
+    Dim oRegistry As Object: Set oRegistry = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+    Dim RegistryPath As String: RegistryPath = "Software\SyncEngines\Providers\OneDrive\"
+    
+    Dim mountPoint As String
+    Dim urlNamespace As String
+    
+    Dim subKeys() As Variant
+    oRegistry.EnumKey HKCU, RegistryPath, subKeys
+    
+    Dim subKey As Variant: For Each subKey In subKeys
+        oRegistry.GetStringValue HKCU, RegistryPath & subKey, "UrlNamespace", urlNamespace
+        oRegistry.GetStringValue HKCU, RegistryPath & subKey, "MountPoint", mountPoint
+        
+        'Debug.Print urlNamespace, mountPoint
+        
+        If urlNamespace <> vbNullString Then
+            
+            If Not this.OneDriveMountPoints.Exists(urlNamespace) Then
+            
+                this.OneDriveMountPoints.Add urlNamespace, mountPoint
+            
+            End If
+            
+        End If
+        
+    Next
+    
+Exit Sub
+ErrHandler:
+    this.ErrorGuard.RaiseGuard TypeName(Me) & ".GetOnDriveMountPoints"
+End Sub
+
 Private Sub Class_Initialize()
     Set this.Fso = New FileSystemObject
     Set this.ErrorGuard = New ErrorGuard
+    Set this.OneDriveMountPoints = New Dictionary
+    
+    GetOnDriveMountPoints
+    
 End Sub
 
 Private Sub Class_Terminate()
     Set this.Fso = Nothing
     Set this.ErrorGuard = Nothing
+    Set this.OneDriveMountPoints = Nothing
 End Sub
 
 Public Property Get Fso() As FileSystemObject
