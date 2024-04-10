@@ -30,4 +30,4 @@ PathLib is self instanced no need to create.
 | Function  | `RemoveInvalidCharsFromFileName(ByVal fileName As String, Optional replaceInvalidChars As Boolean = False, Optional replacement As String = "_") As String `  | Removes invalid chars from file name. If **replaceInvalidChars** is set to true then invalid chars will be replaced with provided or default **replacement** string |
 | Function | `RemoveInvalidCharsFromPath(ByVal sPath As String) As String` | Removes invalid chars from path|
 | Function | `HasExctension(ByVal sPath As String) As Boolean` | Similar function to .Net Path.HasExctension function. Determines whether the path includes a file name extension|
-| Function | `UriPathToLocal(sPath As String) As String` | Changes OneDrive path to local path. NOTE: works fine with ONEDRIVECOMMERCIAL. TODO: Try figure out how [cristianbuse](https://github.com/cristianbuse/VBA-FileTools) solved GetOneDriveLocalPath  |
+| Function | `UriPathToLocal(sPath As String) As String` | Changes OneDrive path to local path.|
