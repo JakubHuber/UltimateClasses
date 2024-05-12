@@ -213,7 +213,7 @@ Public Function UriPathToLocal(sPath As String) As String
         
         If InStr(1, sPath, CStr(v), vbTextCompare) > 0 Then
             
-            UriPathToLocal = Replace(sPath, CStr(v), this.OneDriveMountPoints(v) & SLASH, , , vbTextCompare)
+            UriPathToLocal = Replace(sPath, CStr(v), this.OneDriveMountPoints(v) & BACKSLASH, , , vbTextCompare)
             Exit Function
             
         End If
